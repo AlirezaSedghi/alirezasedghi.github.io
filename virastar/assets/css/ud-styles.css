@@ -695,6 +695,18 @@ p {
   right: -20px;
 }
 
+@media (max-width: 767px) {
+  .ud-hero-image .shape.shape-1, .ud-hero-image .shape.shape-2 {
+    width: 110px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ud-hero-image .shape.shape-1, .ud-hero-image .shape.shape-2 {
+    width: 90px;
+  }
+}
+
 /* ===== Features CSS ===== */
 .ud-features {
   padding-top: 120px;
@@ -1101,4 +1113,3 @@ div.code-toolbar > .toolbar > .toolbar-item {
   font-size: 38px;
   font-weight: 600;
 }
-/*# sourceMappingURL=ud-styles.css.map */
