@@ -161,324 +161,407 @@ echo $cleaned; // Outputs: "فارسی را کمی درست‌تر می‌نوی
                         <div class="col-12 mb-3">
                             <h4 class="text-end ltr mb-2">Virastar([options])</h4>
                             <h5 class="mb-1">تنظیمات</h5>
-                            <p>نوع: <span class="btn btn-light text-danger py-0 px-2">آرایه</span></p>
+                            <p>نوع: <span class="btn btn-light text-danger py-0 px-2 cursor-default">آرایه</span></p>
                             <pre><code class="language-php">$virastar   = new Virastar([
                     "fix_english_numbers": false,
                     "cleanup_line_breaks": false
                 ]);</code></pre>
                         </div>
 
-                        <div class="col-12 mb-3">
-                            <h3>تنظیمات و مشخصه‌ها</h3>
-                            <pre><code>
-    Virastar comes with a list of options to control its behavior.
-    normalize_eol
-
-    default: true
-
-    replace windows end of lines with unix eol (\n)
-
-    decode_html_entities
-
-    default: true
-
-    converts numeral and selected html character-sets into original characters
-
-    fix_dashes
-
-    default: true
-
-    replaces triple dash to mdash
-    replaces double dash to ndash
-
-    fix_three_dots
-
-    default: true
-
-    removes spaces between dots
-    replaces three dots with ellipsis character
-
-    normalize_ellipsis
-
-    default: true
-
-    replaces more than one ellipsis with one
-    replaces (space|tab|zwnj) after ellipsis with one space
-
-    normalize_dates
-
-    default: true
-
-    re-orders date parts with slash as delimiter
-
-    fix_english_quotes_pairs
-
-    default: true
-
-    replaces english quote pairs (“”) with their persian equivalent («»)
-
-    fix_english_quotes
-
-    default: true
-
-    replaces english quote marks with their persian equivalent
-
-    fix_hamzeh
-
-    default: true
-
-    replaces ه followed by (space|ZWNJ|lrm) follow by ی with هٔ
-    replaces ه followed by (space|ZWNJ|lrm|nothing) follow by ء with هٔ
-    replaces هٓ or single-character ۀ with the standard هٔ
-
-    fix_hamzeh_arabic
-
-    default: false
-
-    converts arabic hamzeh ة to هٔ
-
-    cleanup_rlm
-
-    default: true
-
-    converts Right-to-left marks followed by persian characters to zero-width non-joiners (ZWNJ)
-
-    cleanup_zwnj
-
-    default: true
-
-    converts all soft hyphens (&shy;) into zwnj
-    removes more than one zwnj
-    cleans zwnj after characters that don't connect to the next
-    cleans zwnj before and after numbers, english words, spaces and punctuations
-    removes unnecessary zwnj on start/end of each line
-
-    fix_arabic_numbers
-
-    default: true
-
-    replaces arabic numbers with their persian equivalent
-
-    fix_english_numbers
-
-    default: true
-
-    replaces english numbers with their persian equivalent
-
-    fix_numeral_symbols
-
-    default: true
-
-    replaces english percent signs (U+066A)
-    replaces dots between numbers into decimal separator (U+066B)
-    replaces commas between numbers into thousands separator (U+066C)
-
-    fix_misc_non_persian_chars
-
-    default: true
-
-    replaces arabic normal/swash kaf with its persian equivalent
-    replaces arabic/urdu/pushtu/uyghur yeh with its persian equivalent
-    replaces kurdish he with its persian equivalent
-
-    fix_punctuations
-
-    default: true
-
-    replaces ,, ; with its persian equivalent
-
-    fix_question_mark
-
-    default: true
-
-    replaces question marks with its persian equivalent
-
-    fix_prefix_spacing
-
-    default: true
-
-    puts zwnj between the word and the prefix:
-    mi*, nemi*, bi*
-
-    fix_suffix_spacing
-
-    default: true
-
-    puts zwnj between the word and the suffix:
-    *ha, *haye
-    *am, *at, *ash, *ei, *eid, *eem, *and, *man, *tan, *shan
-    *tar, *tari, *tarin
-    *hayee, *hayam, *hayat, *hayash, *hayetan, *hayeman, *hayeshan
-
-    fix_suffix_misc
-
-    default: true
-
-    replaces ه followed by ئ or ی, and then by ی, with ه‌ای
-
-    fix_spacing_for_braces_and_quotes
-
-    default: true
-
-    removes inside spaces and more than one outside for (), [], {}, “” and «»
-
-    fix_spacing_for_punctuations
-
-    default: true
-
-    removes space before punctuations
-    removes more than one space after punctuations, except followed by new-lines
-    removes space after colon that separates time parts
-    removes space after dots in numbers
-    removes space before some common domain tlds
-    removes space between question and exclamation marks
-    removes space between same marks
-
-    fix_diacritics
-
-    default: true
-
-    cleans zwnj before diacritic characters
-    cleans more than one diacritic characters
-    clean spaces before diacritic characters
-
-    remove_diacritics
-
-    default: false
-
-    removes all diacritic characters
-
-    fix_persian_glyphs
-
-    default: true
-
-    converts incorrect persian glyphs to standard characters
-
-    fix_misc_spacing
-
-    default: true
-
-    removes space before parentheses on misc cases
-    removes space before braces containing numbers
-
-    cleanup_spacing
-
-    default: true
-
-    replaces more than one space with just a single one
-    cleans whitespace/zwnj between new-lines
-
-    cleanup_line_breaks
-
-    default: true
-
-    cleans more than two contiguous line breaks
-
-    cleanup_begin_and_end
-
-    default: true
-
-    removes space/tab/zwnj/nbsp from the beginning of the new-lines
-    remove spaces, tabs, zwnj, direction marks and new lines from the beginning and end of text
-
-    markdown
-    markdown_normalize_braces
-
-    default: true
-
-    remove spaces between [] and () ([text] (link) into [text](link))
-    removes space between ! and opening brace (! [alt](src) into ![alt](src))
-    remove spaces inside double (), [], {} ([[ text ]] into [[text]])
-    remove spaces between double (), [], {} ([[text] ] into [[text]])
-
-    markdown_normalize_lists
-
-    default: true
-
-    removes extra lines between two items on a markdown list beginning with -, * or #
-
-    skip_markdown_ordered_lists_numbers_conversion
-
-    default: false
-
-    skips converting english numbers of ordered lists in markdown
-
-    aggressive editing
-    cleanup_extra_marks
-
-    default: true
-
-    replaces more than one exclamation mark with just one
-    replaces more than one english or persian question mark with just one
-    re-orders consecutive marks: ?! into !?
-
-    kashidas_as_parenthetic
-
-    default: true
-
-    replaces kashidas to ndash in parenthetic
-
-    cleanup_kashidas
-
-    default: true
-
-    converts kashida between numbers to ndash
-    removes all kashidas between non-whitespace characters
-
-    extras
-    preserve_front_matter
-
-    default: true
-
-    preserves front matter data in the text
-
-    preserve_HTML
-
-    default: true
-
-    preserves all html tags in the text
-
-    preserve_comments
-
-    default: true
-
-    preserves all html comments in the text
-
-    preserve_entities
-
-    default: true
-
-    preserves all html entities in the text
-
-    preserve_URIs
-
-    default: true
-
-    preserves all uri strings in the text
-
-    preserve_brackets
-
-    default: false
-
-    preserves strings inside square brackets ([])
-
-    preserve_braces
-
-    default: false
-
-    preserves strings inside curly braces ({})
-
-    preserve_nbsp
-
-    default: true
-
-    preserves all no-break space entities in the text
-                            </code></pre>
+                        <div class="col-12">
+                            <h3 class="mb-3">تنظیمات و مشخصه‌ها</h3>
+                            <div class="options-and-specifications">
+                                <p>
+                                    <span class="btn btn-light cursor-default">normalize_eol</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    جایگزینی انتهای خطوط ویندوز با eol یونیکس <span class="ltr">(\n)</span>
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">decode_html_entities</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    converts numeral and selected html character-sets into original characters
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_dashes</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces triple dash to mdash
+                                    <br>
+                                    replaces double dash to ndash
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_three_dots</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    removes spaces between dots
+                                    <br>
+                                    replaces three dots with ellipsis character
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">normalize_ellipsis</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces more than one ellipsis with one
+                                    <br>
+                                    replaces (space|tab|zwnj) after ellipsis with one space
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">normalize_dates</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    re-orders date parts with slash as delimiter
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_english_quotes_pairs</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces english quote pairs (“”) with their persian equivalent («»)
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_english_quotes</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces english quote marks with their persian equivalent
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_hamzeh</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces ه followed by (space|ZWNJ|lrm) follow by ی with هٔ
+                                    <br>
+                                    replaces ه followed by (space|ZWNJ|lrm|nothing) follow by ء with هٔ
+                                    <br>
+                                    replaces هٓ or single-character ۀ with the standard هٔ
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_hamzeh_arabic</span>
+                                    <br>
+                                    پیش‌فرض: <code>false</code>
+                                    <br>
+                                    converts arabic hamzeh ة to هٔ
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_rlm</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    converts Right-to-left marks followed by persian characters to zero-width non-joiners (ZWNJ)
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_zwnj</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    converts all soft hyphens (&shy;) into zwnj
+                                    <br>
+                                    removes more than one zwnj
+                                    <br>
+                                    cleans zwnj after characters that don't connect to the next
+                                    <br>
+                                    cleans zwnj before and after numbers, english words, spaces and punctuations
+                                    <br>
+                                    removes unnecessary zwnj on start/end of each line
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_arabic_numbers</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces arabic numbers with their persian equivalent
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_english_numbers</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces english numbers with their persian equivalent
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_numeral_symbols</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces english percent signs (U+066A)
+                                    <br>
+                                    replaces dots between numbers into decimal separator (U+066B)
+                                    <br>
+                                    replaces commas between numbers into thousands separator (U+066C)
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_misc_non_persian_chars</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces arabic normal/swash kaf with its persian equivalent
+                                    <br>
+                                    replaces arabic/urdu/pushtu/uyghur yeh with its persian equivalent
+                                    <br>
+                                    replaces kurdish he with its persian equivalent
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_punctuations</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces ,, ; with its persian equivalent
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_question_mark</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces question marks with its persian equivalent
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_prefix_spacing</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    puts zwnj between the word and the prefix:
+                                    <br>
+                                    mi*, nemi*, bi*
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_suffix_spacing</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    puts zwnj between the word and the suffix:
+                                    <br>
+                                    *ha, *haye
+                                    <br>
+                                    *am, *at, *ash, *ei, *eid, *eem, *and, *man, *tan, *shan
+                                    <br>
+                                    *tar, *tari, *tarin
+                                    <br>
+                                    *hayee, *hayam, *hayat, *hayash, *hayetan, *hayeman, *hayeshan
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_suffix_misc</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces ه followed by ئ or ی, and then by ی, with ه‌ای
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_spacing_for_braces_and_quotes</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    removes inside spaces and more than one outside for (), [], {}, “” and «»
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_spacing_for_punctuations</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    removes space before punctuations
+                                    <br>
+                                    removes more than one space after punctuations, except followed by new-lines
+                                    <br>
+                                    removes space after colon that separates time parts
+                                    <br>
+                                    removes space after dots in numbers
+                                    <br>
+                                    removes space before some common domain tlds
+                                    <br>
+                                    removes space between question and exclamation marks
+                                    <br>
+                                    removes space between same marks
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_diacritics</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    cleans zwnj before diacritic characters
+                                    <br>
+                                    cleans more than one diacritic characters
+                                    <br>
+                                    clean spaces before diacritic characters
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">remove_diacritics</span>
+                                    <br>
+                                    پیش‌فرض: <code>false</code>
+                                    <br>
+                                    removes all diacritic characters
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_persian_glyphs</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    converts incorrect persian glyphs to standard characters
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">fix_misc_spacing</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    removes space before parentheses on misc cases
+                                    <br>
+                                    removes space before braces containing numbers
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_spacing</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces more than one space with just a single one
+                                    <br>
+                                    cleans whitespace/zwnj between new-lines
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_line_breaks</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    cleans more than two contiguous line breaks
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_begin_and_end</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    removes space/tab/zwnj/nbsp from the beginning of the new-lines
+                                    <br>
+                                    remove spaces, tabs, zwnj, direction marks and new lines from the beginning and end of text
+                                </p>
+
+                                <h5 class="mb-1">Markdown</h5>
+                                <p>
+                                    <span class="btn btn-light cursor-default">markdown_normalize_braces</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    remove spaces between [] and () ([text] (link) into [text](link))
+                                    <br>
+                                    removes space between ! and opening brace (! [alt](src) into ![alt](src))
+                                    <br>
+                                    remove spaces inside double (), [], {} ([[ text ]] into [[text]])
+                                    <br>
+                                    remove spaces between double (), [], {} ([[text] ] into [[text]])
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">markdown_normalize_lists</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    removes extra lines between two items on a markdown list beginning with -, * or #
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">skip_markdown_ordered_lists_numbers_conversion</span>
+                                    <br>
+                                    پیش‌فرض: <code>false</code>
+                                    <br>
+                                    skips converting english numbers of ordered lists in markdown
+                                </p>
+
+                                <h5 class="mb-1">ویرایش عمیق</h5>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_extra_marks</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces more than one exclamation mark with just one
+                                    <br>
+                                    replaces more than one english or persian question mark with just one
+                                    <br>
+                                    re-orders consecutive marks: ?! into !?
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">kashidas_as_parenthetic</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    replaces kashidas to ndash in parenthetic
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">cleanup_kashidas</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    converts kashida between numbers to ndash
+                                    <br>
+                                    removes all kashidas between non-whitespace characters
+                                </p>
+
+                                <h5 class="mb-1">سایر موارد</h5>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_front_matter</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    preserves front matter data in the text
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_HTML</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    preserves all html tags in the text
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_comments</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    preserves all html comments in the text
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_entities</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    preserves all html entities in the text
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_URIs</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    preserves all uri strings in the text
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_brackets</span>
+                                    <br>
+                                    پیش‌فرض: <code>false</code>
+                                    <br>
+                                    preserves strings inside square brackets ([])
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_braces</span>
+                                    <br>
+                                    پیش‌فرض: <code>false</code>
+                                    <br>
+                                    preserves strings inside curly braces ({})
+                                </p>
+                                <p>
+                                    <span class="btn btn-light cursor-default">preserve_nbsp</span>
+                                    <br>
+                                    پیش‌فرض: <code>true</code>
+                                    <br>
+                                    preserves all no-break space entities in the text
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!-- ====== Documentation End ====== -->
 
@@ -502,8 +585,7 @@ echo $cleaned; // Outputs: "فارسی را کمی درست‌تر می‌نوی
                             <img src="assets/images/logo/small.png" alt="logo"/>
                         </a>
                         <p class="ud-widget-desc">ویراستاری متن فارسی برای PHP</p>
-                        <p class="ud-widget-desc">استفاده و توسعه از این کتابخانه تحت مجوز MIT آزاد می‌باشد. <i
-                                class="lni lni-friendly lni-lg"></i></p>
+                        <p class="ud-widget-desc">استفاده و توسعه از این کتابخانه تحت مجوز MIT آزاد می‌باشد. <i class="lni lni-friendly lni-lg"></i></p>
                     </div>
                 </div>
             </div>
@@ -522,48 +604,5 @@ echo $cleaned; // Outputs: "فارسی را کمی درست‌تر می‌نوی
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/prism.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-    // ==== for menu scroll
-    const pageLink = document.querySelectorAll(".ud-menu-scroll");
-
-    pageLink.forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.querySelector(elem.getAttribute("href")).scrollIntoView({
-                behavior: "smooth",
-                offsetTop: 1 - 60,
-            });
-        });
-    });
-
-    // section menu active
-    function onScroll(event) {
-        const sections = document.querySelectorAll(".ud-menu-scroll");
-        const scrollPos =
-            window.pageYOffset ||
-            document.documentElement.scrollTop ||
-            document.body.scrollTop;
-
-        for (let i = 0; i < sections.length; i++) {
-            const currLink = sections[i];
-            const val = currLink.getAttribute("href");
-            const refElement = document.querySelector(val);
-            const scrollTopMinus = scrollPos + 73;
-            if (
-                refElement.offsetTop <= scrollTopMinus &&
-                refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-            ) {
-                document
-                    .querySelector(".ud-menu-scroll")
-                    .classList.remove("active");
-                currLink.classList.add("active");
-            } else {
-                currLink.classList.remove("active");
-            }
-        }
-    }
-
-    window.document.addEventListener("scroll", onScroll);
-</script>
 </body>
 </html>

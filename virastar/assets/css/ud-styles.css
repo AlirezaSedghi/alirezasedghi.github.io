@@ -167,6 +167,10 @@ p {
   direction: ltr;
 }
 
+.cursor-default {
+  cursor: default;
+}
+
 .bg_cover {
   background-position: center center;
   background-size: cover;
@@ -913,6 +917,10 @@ p {
 
 div.code-toolbar > .toolbar > .toolbar-item {
   margin-right: 5px;
+}
+
+.options-and-specifications > p:last-child {
+  margin-bottom: 0;
 }
 
 /* ===== Footer CSS ===== */
